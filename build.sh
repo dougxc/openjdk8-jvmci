@@ -17,8 +17,11 @@ hg -R graal-jvmci-8 update jvmci-${JVMCI_VERSION}
 
 # Build the VM, install and test it
 mx --primary-suite graal-jvmci-8 --vm=server build -DFULL_DEBUG_SYMBOLS=0
+mx --primary-suite graal-jvmci-8 --vm=client build -DFULL_DEBUG_SYMBOLS=0
 mx --primary-suite graal-jvmci-8 --vm=server -v vm -version
+mx --primary-suite graal-jvmci-8 --vm=client -v vm -version
 mx --primary-suite graal-jvmci-8 --vm=server -v unittest
+mx --primary-suite graal-jvmci-8 --vm=client -v unittest
 
 # Build tar.gz archive
 export JVMCI_JDK_HOME=$(mx --primary-suite graal-jvmci-8 jdkhome)
